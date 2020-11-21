@@ -9,8 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    FormGroupComponent
-  ],
+    FormGroupComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

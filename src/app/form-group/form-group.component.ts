@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommentService } from '../comment.service';
 
 @Component({
   selector: 'app-form-group',
@@ -8,12 +9,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class FormGroupComponent implements OnInit {
 
-  @Output() getComment = new EventEmitter<string>();
-  
   formSetting: FormGroup;
-  
+
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private commentService: CommentService
   ) { }
 
   ngOnInit(): void {
@@ -22,18 +22,14 @@ export class FormGroupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       comment: ['', [Validators.required, Validators.maxLength(150)]]
     });
-    }
+  }
 
-    sendForm() {
-      console.log(this.formSetting.value);
+  sendForm() {
+    console.log(this.formSetting.value);
+    this.commentService.addComment(this.formSetting.value);
     }
 
     get form() {
       return this.formSetting.controls;
     }
-
-    addComment() {
-      this.formSetting.value;
-      this.getComment.emit();
-      }
-    }
+}

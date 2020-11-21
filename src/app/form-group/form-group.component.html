@@ -1,42 +1,42 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <form [formGroup]='formSetting' (ngSubmit)='sendForm()'>
-          <div class="form-group">
-            <input type="text" class="form-control" formControlName='name' placeholder="Name">
-          </div>
-          <div>
-            <p>
-                <span *ngIf="form.name.errors?.required && !form.name.pristine" class="error-msg">
-                    Name is required
-                </span>
-            </p>
-          </div>
-          <div class="form-group">
-            <input type="email" class="form-control" formControlName='email' placeholder="Email">
-          </div>
-          <div>
-            <p>
-                <span *ngIf="form.email.errors?.required && !form.email.pristine" class="error-msg">
-                    Email is required
-                </span>
-            </p>
-            <p>
-                <span *ngIf="form.email.errors?.email" class="error-msg">
-                    Format email
-                </span>
-            </p>
+  <div class="row">
+    <div class="col-md-5">
+      <form [formGroup]='formSetting' (ngSubmit)='sendForm()'>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName='name' placeholder="Name">
         </div>
-          <div class="form-group">
-            <textarea class="form-control" rows="3" formControlName='comment' placeholder="Comment"></textarea>
-          </div>
-          <div>
-            <p>
-                <span *ngIf="form.comment.errors?.required && !form.comment.pristine" class="error-msg">
-                    Comment is required
-                </span>
-            </p>
-          </div>
-          <button type="submit" class="btn btn-primary" [disabled]="!formSetting.valid" (click)="addComment">Add</button>
-        </form>
+        <div>
+          <p>
+              <span *ngIf="form.name.errors?.required && !form.name.pristine" class="error-msg">
+                  Name is required
+              </span>
+          </p>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" formControlName='email' placeholder="Email">
+        </div>
+        <div>
+          <p>
+              <span *ngIf="form.email.errors?.required && !form.email.pristine" class="error-msg">
+                  Email is required
+              </span>
+          </p>
+          <p>
+              <span *ngIf="form.email.errors?.email" class="error-msg">
+                  Format email
+              </span>
+          </p>
       </div>
+        <div class="form-group">
+          <textarea class="form-control" rows="3" formControlName='comment' placeholder="Comment"></textarea>
+        </div>
+        <div>
+          <p>
+              <span *ngIf="form.comment.errors?.required && !form.comment.pristine" class="error-msg">
+                  Comment is required
+              </span>
+          </p>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!formSetting.valid" (click)="sendForm">Add</button>
+      </form>
+    </div>
