@@ -10,6 +10,7 @@ import { CommentService } from '../comment.service';
 export class FormGroupComponent implements OnInit {
 
   formSetting: FormGroup;
+  comment: Comment [];
 
   constructor(
     private fb: FormBuilder,
@@ -22,7 +23,8 @@ export class FormGroupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       comment: ['', [Validators.required, Validators.maxLength(150)]]
     });
-  }
+    this.comment = this.commentService.comment
+    }
 
   sendForm() {
     console.log(this.formSetting.value);

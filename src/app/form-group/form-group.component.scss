@@ -1,3 +1,15 @@
+h1 {
+    color: maroon;
+}
 .error-msg {
     color: red;
+}
+.block {
+    margin-top: 20px;
+    padding: 30px;
+    border-radius: 30px;
+    box-sizing: content-box;
+    width: 700px;   
+    background-color: rgb(231, 145, 157);
+    align-items: center;
 }

@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container block">
+  <h1>Test Angular</h1>
   <div class="row">
     <div class="col-md-5">
       <form [formGroup]='formSetting' (ngSubmit)='sendForm()'>
@@ -7,9 +8,9 @@
         </div>
         <div>
           <p>
-              <span *ngIf="form.name.errors?.required && !form.name.pristine" class="error-msg">
-                  Name is required
-              </span>
+            <span *ngIf="form.name.errors?.required && !form.name.pristine" class="error-msg">
+              Name is required
+            </span>
           </p>
         </div>
         <div class="form-group">
@@ -17,26 +18,39 @@
         </div>
         <div>
           <p>
-              <span *ngIf="form.email.errors?.required && !form.email.pristine" class="error-msg">
-                  Email is required
-              </span>
+            <span *ngIf="form.email.errors?.required && !form.email.pristine" class="error-msg">
+              Email is required
+            </span>
           </p>
           <p>
-              <span *ngIf="form.email.errors?.email" class="error-msg">
-                  Format email
-              </span>
+            <span *ngIf="form.email.errors?.email" class="error-msg">
+              Format email
+            </span>
           </p>
-      </div>
+        </div>
         <div class="form-group">
           <textarea class="form-control" rows="3" formControlName='comment' placeholder="Comment"></textarea>
         </div>
         <div>
           <p>
-              <span *ngIf="form.comment.errors?.required && !form.comment.pristine" class="error-msg">
-                  Comment is required
-              </span>
+            <span *ngIf="form.comment.errors?.required && !form.comment.pristine" class="error-msg">
+              Comment is required
+            </span>
           </p>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!formSetting.valid" (click)="sendForm">Add</button>
+        <button type="submit" class="btn btn-success btn-lg" [disabled]="!formSetting.valid">Submit comment</button>
       </form>
+    </div>
+
+
+    <div class="col-md-6 offset-md-1">
+      <div class="media mb-3" *ngFor="let item of comment; let i = index">
+        <img src="http://lorempixel.com/58/58/people/" class="mr-3" alt="...">
+        <div class="media-body">
+          <h4>{{item.name}}</h4>
+          <p>{{item.email}}</p>
+          <p>{{item.comment}}</p>
+          <button class="btn btn-primary" (click)="commentService.commentDel(i)">Delete</button>
+        </div>
+      </div>
     </div>

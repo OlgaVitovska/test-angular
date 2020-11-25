@@ -6,15 +6,16 @@ import { FormGroup } from '@angular/forms';
 })
 export class CommentService {
 
-  comment: Comment[];
+  comment: Comment[] = [];
 
   constructor() { }
 
   addComment(comment) {
-    this.comment.values ({
-      name,
-      email,
-      comment
-    });
+    console.log(comment);
+    this.comment.push(comment);
+  }
+  commentDel(i) {
+    console.log(i);
+    this.comment.splice(i, 1);
   }
 }
